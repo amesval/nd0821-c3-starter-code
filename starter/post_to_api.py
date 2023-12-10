@@ -22,6 +22,6 @@ with open(args.input_filename, 'r') as f:
 data = json.dumps(data)
 
 # Make inference in the API
-response = requests.post(args.endpoint_url, data=data)
-response = response.json()
-print(response)
+status = requests.post(args.endpoint_url, data=data)
+response = status.json()
+print(f"status: {status}    response: {response}")
