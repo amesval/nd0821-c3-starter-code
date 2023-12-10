@@ -7,18 +7,22 @@ import numpy as np
 
 app = FastAPI(
     title="API for salary prediction",
-    description="An API to predict whether income exceeds $50K/yr based on census data.",
+    description="An API to predict whether income\
+          exceeds $50K/yr based on census data.",
     version="1.0.0",
 )
+
 
 class Data(BaseModel):
     model_path: str
     query_example: dict
 
+
 # Define a GET on the specified endpoint.
 @app.get("/")
 async def say_hello():
     return {"greeting": "Welcome to our API!"}
+
 
 @app.post("/inference")
 async def inference(data: Data):
