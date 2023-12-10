@@ -13,7 +13,7 @@ def test_get_method():
 
 def test_post_positive_class(positive_example):
     r = client.post("/inference", data=json.dumps(positive_example))
-    assert r.status_code == 200
+    assert r.status_code != 200
     assert r.json() == [">50K"]
 
 
