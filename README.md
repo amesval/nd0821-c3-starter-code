@@ -1,6 +1,7 @@
 # Salary classification for Census Income dataset
 
 In this project we use demographic information to predict if a person has an anual income that exceeds $50k per year, based on census data (https://archive.ics.uci.edu/dataset/20/census+income).
+The model is called from a FastAPI app that runs in a remote server (https://render.com/).
 
 # Setup environment
 
@@ -24,6 +25,18 @@ conda activate <ENV_NAME>
 pip install -r requirements.txt
 ```
 
+# Data
+
+TODO: Dataset location in the repository
+
+# EDA
+
+TODO: Explain EDA and were is located
+
+# Training
+
+TODO: 
+
 ## Repositories
 * Create a directory for the project and initialize git.
     * As you work on the code, continually commit changes. Trained models you want to use in production must be committed to GitHub.
@@ -35,6 +48,10 @@ pip install -r requirements.txt
 * Download census.csv and commit it to dvc.
 * This data is messy, try to open it in pandas and see what you get.
 * To clean it, use your favorite text editor to remove all spaces.
+
+En el folder data estan los datasets:
+    - census.csv
+    - clean_census.csv (version limpia del census)
 
 # Model
 * Using the starter code, write a machine learning model that trains on the clean data and saves the model. Complete any function that has been started.
@@ -59,12 +76,6 @@ pip install -r requirements.txt
     * Hint: think about how paths will differ in your local environment vs. on Heroku.
     * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
 * Write a script that uses the requests module to do one POST on your live API.
-
-
-
-# Title
-
-# Setup
 
 # Training
 
@@ -201,3 +212,8 @@ is going to executre the 8 test cases (3 for the ./test_api.py and 5 ./test_func
 8) Explain CI/CD with GitHub Actions
 9) Explain screenshots
 10) Explain model card
+
+
+# TODO: After all
+1) Rename repo
+2) Change structure of the repo
