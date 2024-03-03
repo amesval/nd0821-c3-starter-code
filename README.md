@@ -1,10 +1,28 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+# Salary classification for Census Income dataset
 
-# Environment Set up
-* Download and install conda if you don’t have it already.
-    * Use the supplied requirements file to create a new environment, or
-    * conda create -n [envname] "python=3.8" scikit-learn pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
-    * Install git either through conda (“conda install git”) or through your CLI, e.g. sudo apt-get git.
+In this project we use demographic information to predict if a person has an anual income that exceeds $50k per year, based on census data (https://archive.ics.uci.edu/dataset/20/census+income).
+
+# Setup environment
+
+1. Clone repository:
+```
+git clone https://github.com/amesval/nd0821-c3-starter-code.git
+```
+
+2. Create a conda environment:
+```
+conda create --name <ENV_NAME> python=3.8
+```
+
+3. Activate environment
+```
+conda activate <ENV_NAME>
+```
+
+4. Install requirements file (move code to the other folder??)
+```
+pip install -r requirements.txt
+```
 
 ## Repositories
 * Create a directory for the project and initialize git.
@@ -41,3 +59,145 @@ Working in a command line environment is recommended for ease of use with git an
     * Hint: think about how paths will differ in your local environment vs. on Heroku.
     * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
 * Write a script that uses the requests module to do one POST on your live API.
+
+
+
+# Title
+
+# Setup
+
+# Training
+
+# Test?
+
+# License
+
+
+Pasos:
+
+1) Entrenamos unos modelos de ML
+2) Guardamos el modelo y generamos unas estadisticas y el dataset limpio mediante el eda.ipynb
+3) Creamos dos ejemplos de prueba:
+    a) api_body_example_neg.json
+    b) api_body_example_pos.json
+3) Creamos un conftest.py que define los ejemplos a usar en el unit test con pytest (se utilizan los dos ejemplos de prueba)
+4) test_api.py define los test cases que se usan en el unit test
+3) Hacemos predicciones con el modelo mediante diferentes enfoques:
+    1) Python (utilizando el script de post_to_api.py):
+        se utilizan los dos ejemplos del paso 3
+    2) Postman:
+        - iniciamos la API
+        - hacemos la inferencia en http://localhost:8000/inference
+    
+
+En el folder data estan los datasets:
+    - census.csv
+    - clean_census.csv (version limpia del census)
+En el folder de model estan:
+    - reporte de metricas: metrics_report_model.txt (tambien esta el metrics_report_model2.txt pero no se usa??? estaba probando la api?)
+    - model.pkl (y model2.pkl que no se usa... tambien esta un rf_model.pkl)
+    - slice_output.txt (el cual nos da las metricas por clase)
+
+En el folder de screenshots:
+    - continuos_deployment.png (imagen de muestra de github actions)
+    - continuous_deployment2.png (muestra que se hace un deployment por medio de github actions, el cual se ejecuta cuando hago push o pull request)
+    - continuous_integration.png (muestra que el pipeline ejecutado por github actions se ejecuta correctamente cuando se hace push.. al ejecutar esto se deploya al nuevo server,
+    es decir tenemos un CI/CD?)
+    - endpoint_logs_status.png (muestra los logs de nuestro server y de que ya esta arriba listo para usarse)
+    - example_get.png (muestra como usar el metodo get desde el browser con FastAPI [https://salary-prediction-api-s2x0.onrender.com/docs#]) : 
+            
+        - para esto solo es necesario abrir el browser: https://salary-prediction-api-s2x0.onrender.com/
+    - example_post.png (muestra el ejemplo que se usará con el metodo post desde el browser con FastAPI)
+    - example_post_response.png (muestra el resultado de usar post desde el browser con FastAPI)
+    - live_get.png (muestra el resultado de usar get en el browser)
+    - live_post.png (muestra el resultado de usar post desde python)
+    - postman_example.png (muestra el resultado  desde la API de python)
+    - sanity_check.png (muestra el resultado del unit test en python)
+
+El model_card_template.md es una carta del modelo
+
+para que sirve el setup.py?
+
+requirements.txt contiene el ambiente a crear
+
+sanitycheck.py Corre el unit test en python
+
+post_to_api.py llama el metodo post de la API (local y remota)
+
+test_api.py define las tres pruebas unitarias que corre el sanitycheck?
+
+test_set.csv es uno de los datasets a utilizar (que es el test_set2.csv)
+
+
+BORRAR:
+    - dvc_on_heroku_instructions.md
+
+
+Necesito describir la salida del modelo >50K, <=50K
+##########################################################
+Hay tres formas para llamar los metodos get y post:
+
+To start a local app we call:
+    - uvicorn main:app --reload
+    if we go to http://127.0.0.1:8000 or http://localhost:8000/
+    we can observe the get method there or from server https://salary-prediction-api-s2x0.onrender.com/
+
+1) Python (To test the post method only)
+    - using localhost (python post_to_api.py --endpoint_url http://127.0.0.1:8000/inference --input_filename ./api_body_example_neg.json)
+    - using server (python post_to_api.py --endpoint_url https://salary-prediction-api-s2x0.onrender.com/inference --input_filename ./api_body_example_neg.json)
+2) Postman:
+    - using localhost (uvicorn main:app --reload.. more info https://fastapi.tiangolo.com/tutorial/first-steps/)
+    - using server (already working in the render server)
+3) FastAPI (in the browser):
+    - Either for server of for local API
+        - server: (https://salary-prediction-api-s2x0.onrender.com/docs)
+        - localhost: (http://127.0.0.1:8000/docs or http://localhost:8000.docs)
+    - call the get method (say hello)
+    - call the post method (inference)
+##########################################################
+
+- starter
+    - conftest.py
+    - test_api.py
+    - sanitycheck.py (run sanity check to meet udacity criteria)
+    - eda.ipynb (crea las estadisticas y limpia el dataset)
+    - main.py (script to call the FastAPI. it also defines the get and post method and their endpoints)
+    - post_to_api.py (llama el metodo post para ejecutarlo en python)
+    - setup.py (included at the beginning, check what it does)
+    - starter
+        - conftest.py
+        - test_functions.py
+        - train_model.py (???)
+        - ml
+            - data.py (???)
+            - model.py (???)
+
+# Note: The server is running the app
+
+# To run the sanity check: It doesn't run the unit test.. it just to verify
+# that we have the 3 test cases
+
+
+# To run all the unit test just move inside ./starter and execute pytest (or pytest .).. its better to use pytest -v
+is going to executre the 8 test cases (3 for the ./test_api.py and 5 ./test_functions.py)
+
+
+# TODO EXPLAIN HOW TO TRAIN THE MODEL
+
+
+
+# NOTE: UNTIL NOW WE NEED TO EXPLAIN
+1) Run test cases
+2) Run API inferences in:
+    - Python
+    - FastAPI
+    - Postman
+    (Either for server and local app)
+3) Run test cases
+4) Explain how to train the model
+5) Explain EDA process
+6) Explain data?? (explain how to clean data)
+7) Explain model?? (explain model metrics??)
+8) Explain CI/CD with GitHub Actions
+9) Explain screenshots
+10) Explain model card
