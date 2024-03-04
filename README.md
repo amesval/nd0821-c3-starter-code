@@ -98,7 +98,7 @@ and follow the instructions to link your GitHub repository to the server.
 
 # License
 
-[License] (LICENSE.txt)
+[License](LICENSE.txt)
 
 Pasos:
 
@@ -216,7 +216,7 @@ To start a local app we call:
 8) [Done] Explain CI/CD with GitHub Actions
 9) [Done] Explain screenshots? Not needed
 10) [Done]Explain model card
-
+11) [Done] Add License
 
 # TODO: After all
 1) Rename repo
