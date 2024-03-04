@@ -27,62 +27,78 @@ pip install -r requirements.txt
 
 # Data
 
-TODO: Dataset location in the repository
+The dataset location of the Census dataset (https://archive.ics.uci.edu/dataset/20/census+income) can be found in *./data/census.csv*. A clean version of the dataset can be found here *./data/clean_census.csv*.
 
-# EDA
+# Exploratory Data Analysis
 
-TODO: Explain EDA and were is located
+A dataset exploration can be found in the *eda.ipynb* notebook. A clean version of the dataset (*./data/clean_census.csv*) is generated here.
 
 # Training
 
-TODO: 
+The income classification is perform by a Random Forest Classification model. To train a new model with the *./data/clean_census.csv* just run:
+```
+python starter/ml/train_model.py
+```
 
-## Repositories
-* Create a directory for the project and initialize git.
-    * As you work on the code, continually commit changes. Trained models you want to use in production must be committed to GitHub.
-* Connect your local git repo to GitHub.
-* Setup GitHub Actions on your repo. You can use one of the pre-made GitHub Actions if at a minimum it runs pytest and flake8 on push and requires both to pass without error.
-    * Make sure you set up the GitHub Action to have the same version of Python as you used in development.
+When a training is execute, it is possible to obtained the metrics for a particular feature once the model is trained. By default the *workclass* feature is selected. You can change the feature by using the *feature_to_slice* argument:
+```
+python starter/ml/train_model.py --feature_to_slice <FEATURE_NAME>
+```
 
-# Data
-* Download census.csv and commit it to dvc.
-* This data is messy, try to open it in pandas and see what you get.
-* To clean it, use your favorite text editor to remove all spaces.
-
-En el folder data estan los datasets:
-    - census.csv
-    - clean_census.csv (version limpia del census)
+The metrics for the selected feature can be found in *./model/slice_output.txt*.
 
 # Model
-* Using the starter code, write a machine learning model that trains on the clean data and saves the model. Complete any function that has been started.
-* Write unit tests for at least 3 functions in the model code.
-* Write a function that outputs the performance of the model on slices of the data.
-    * Suggestion: for simplicity, the function can just output the performance on slices of just the categorical features.
-* Write a model card using the provided template.
+
+The trained model is saved as *./model/model.pkl*. You can check the metrics of the current model in *./model/metrics_report_model.txt*.
+
+You can check more details of the trained model in the *model_card_template.md*, including, ethical considerations, caveats and recommendations.
 
 # API Creation
-*  Create a RESTful API using FastAPI this must implement:
-    * GET on the root giving a welcome message.
-    * POST that does model inference.
-    * Type hinting must be used.
-    * Use a Pydantic model to ingest the body from POST. This model should contain an example.
-   	 * Hint: the data has names with hyphens and Python does not allow those as variable names. Do not modify the column names in the csv and instead use the functionality of FastAPI/Pydantic/etc to deal with this.
-* Write 3 unit tests to test the API (one for the GET and two for POST, one that tests each prediction).
+
+An API was created using FastAPI (https://fastapi.tiangolo.com/). The API implement:
+* GET method on the root giving a welcome message.
+* POST that does model inference.
+
+The API uses type hinting, and a Pydantic model to ingest the body from POST. You can check the implementation in the *main.py* file.
+
+Two examples are provided to test for a positive and negative class. Feel free to inspect both files:
+1) api_body_example_neg.json
+2) api_body_example_pos.json
+
+# Software test cases
+
+To test the API functionality, the *test_api.py* defines 3 cases to validate the POST and GET methods.
+
+In the *starter/ml/test_functions.py* you can find multiple test cases to verify that the training, the generation of artifacts, and the inference pipeline works as expected.
+
+To run all the test, just run from the terminal
+```
+pytest -v 
+```
+
+# CI/CD with GitHub Actions
+
+For every new commit to the *master branch*, a GitHub Action workflow is trigger. This build, test, and deploy our solution in a *Render* server (https://render.com/). 
+
+The workflow install python dependencies, run tests, and lint checks before deploying the solution. For more details, feel free to review *./github/workflows/python-app.yml*. Note that our GitHub Actions is running *pytest* and *flake8*.
+
+
 
 # API Deployment
-* Create a free Heroku account (for the next steps you can either use the web GUI or download the Heroku CLI).
-* Create a new app and have it deployed from your GitHub repository.
-    * Enable automatic deployments that only deploy if your continuous integration passes.
-    * Hint: think about how paths will differ in your local environment vs. on Heroku.
-    * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
+
+You can test our solution which deploys the API in a *Render* server (https://render.com/).
+
+
+
+Note: To deploy your API in a server, sign up for a render account (https://render.com/),
+and follow the instructions to link your GitHub repository to the server.
+
+
 * Write a script that uses the requests module to do one POST on your live API.
-
-# Training
-
-# Test?
 
 # License
 
+[License] (LICENSE.txt)
 
 Pasos:
 
@@ -185,35 +201,25 @@ To start a local app we call:
 
 # Note: The server is running the app
 
-# To run the sanity check: It doesn't run the unit test.. it just to verify
-# that we have the 3 test cases
-
-
-# To run all the unit test just move inside ./starter and execute pytest (or pytest .).. its better to use pytest -v
-is going to executre the 8 test cases (3 for the ./test_api.py and 5 ./test_functions.py)
-
-
-# TODO EXPLAIN HOW TO TRAIN THE MODEL
-
-
-
 # NOTE: UNTIL NOW WE NEED TO EXPLAIN
-1) Run test cases
+1) [Done]Run test cases
 2) Run API inferences in:
     - Python
     - FastAPI
     - Postman
     (Either for server and local app)
 3) Run test cases
-4) Explain how to train the model
-5) Explain EDA process
-6) Explain data?? (explain how to clean data)
-7) Explain model?? (explain model metrics??)
-8) Explain CI/CD with GitHub Actions
-9) Explain screenshots
-10) Explain model card
+4) [Done] Explain how to train the model
+5) [Done] Explain EDA process
+6) [Done] Explain data?? (explain how to clean data)
+7) [Done] Explain model?? (explain model metrics??)
+8) [Done] Explain CI/CD with GitHub Actions
+9) [Done] Explain screenshots? Not needed
+10) [Done]Explain model card
 
 
 # TODO: After all
 1) Rename repo
 2) Change structure of the repo
+3) Remove the sanity check
+3) Change GitHub Actions "cd starter"
