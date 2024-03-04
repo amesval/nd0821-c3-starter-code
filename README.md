@@ -49,7 +49,12 @@ The metrics for the selected feature can be found in *./model/slice_output.txt*.
 
 # Model
 
-The trained model is saved as *./model/model.pkl*. You can check the metrics of the current model in *./model/metrics_report_model.txt*.
+
+Necesito describir la salida del modelo >50K, <=50K
+
+The trained model is saved as *./model/model.pkl*. The model output could be >50K (Positive class), <=50K (Negative class).
+
+The metrics of the current model are in *./model/metrics_report_model.txt*.
 
 You can check more details of the trained model in the *model_card_template.md*, including, ethical considerations, caveats and recommendations.
 
@@ -86,11 +91,9 @@ The workflow install python dependencies, run tests, and lint checks before depl
 
 # API Deployment
 
-You can test our solution which deploys the API in a *Render* server (https://render.com/).
+You can test our solution which deploys the API in a *Render* server.
 
-
-
-Note: To deploy your API in a server, sign up for a render account (https://render.com/),
+Note: To deploy your API in a server, sign up for a *Render* account (https://render.com/),
 and follow the instructions to link your GitHub repository to the server.
 
 
@@ -100,14 +103,15 @@ and follow the instructions to link your GitHub repository to the server.
 
 [License](LICENSE.txt)
 
-Pasos:
+- Server: https://salary-prediction-api-s2x0.onrender.com/ (How to use GET method from the browser. Just Open the browser) live-get
+- FastAPI: https://salary-prediction-api-s2x0.onrender.com/docs# (How to use GET method from the browser using FastAPI)
+- Postman:
+- Python:
 
-1) Entrenamos unos modelos de ML
-2) Guardamos el modelo y generamos unas estadisticas y el dataset limpio mediante el eda.ipynb
+
 3) Creamos dos ejemplos de prueba:
     a) api_body_example_neg.json
     b) api_body_example_pos.json
-3) Creamos un conftest.py que define los ejemplos a usar en el unit test con pytest (se utilizan los dos ejemplos de prueba)
 4) test_api.py define los test cases que se usan en el unit test
 3) Hacemos predicciones con el modelo mediante diferentes enfoques:
     1) Python (utilizando el script de post_to_api.py):
@@ -115,52 +119,14 @@ Pasos:
     2) Postman:
         - iniciamos la API
         - hacemos la inferencia en http://localhost:8000/inference
-    
 
-En el folder data estan los datasets:
-    - census.csv
-    - clean_census.csv (version limpia del census)
-En el folder de model estan:
-    - reporte de metricas: metrics_report_model.txt (tambien esta el metrics_report_model2.txt pero no se usa??? estaba probando la api?)
-    - model.pkl (y model2.pkl que no se usa... tambien esta un rf_model.pkl)
-    - slice_output.txt (el cual nos da las metricas por clase)
-
-En el folder de screenshots:
-    - continuos_deployment.png (imagen de muestra de github actions)
-    - continuous_deployment2.png (muestra que se hace un deployment por medio de github actions, el cual se ejecuta cuando hago push o pull request)
-    - continuous_integration.png (muestra que el pipeline ejecutado por github actions se ejecuta correctamente cuando se hace push.. al ejecutar esto se deploya al nuevo server,
-    es decir tenemos un CI/CD?)
-    - endpoint_logs_status.png (muestra los logs de nuestro server y de que ya esta arriba listo para usarse)
-    - example_get.png (muestra como usar el metodo get desde el browser con FastAPI [https://salary-prediction-api-s2x0.onrender.com/docs#]) : 
-            
-        - para esto solo es necesario abrir el browser: https://salary-prediction-api-s2x0.onrender.com/
-    - example_post.png (muestra el ejemplo que se usará con el metodo post desde el browser con FastAPI)
-    - example_post_response.png (muestra el resultado de usar post desde el browser con FastAPI)
-    - live_get.png (muestra el resultado de usar get en el browser)
     - live_post.png (muestra el resultado de usar post desde python)
     - postman_example.png (muestra el resultado  desde la API de python)
-    - sanity_check.png (muestra el resultado del unit test en python)
 
-El model_card_template.md es una carta del modelo
-
-para que sirve el setup.py?
-
-requirements.txt contiene el ambiente a crear
-
-sanitycheck.py Corre el unit test en python
 
 post_to_api.py llama el metodo post de la API (local y remota)
-
-test_api.py define las tres pruebas unitarias que corre el sanitycheck?
-
 test_set.csv es uno de los datasets a utilizar (que es el test_set2.csv)
 
-
-BORRAR:
-    - dvc_on_heroku_instructions.md
-
-
-Necesito describir la salida del modelo >50K, <=50K
 ##########################################################
 Hay tres formas para llamar los metodos get y post:
 
