@@ -1,5 +1,5 @@
 import pytest
-from starter.ml.model import (
+from ml.model import (
     train_model,
     save_model_attributes,
     load_model_attributes,

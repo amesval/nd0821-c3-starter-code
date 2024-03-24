@@ -3,8 +3,8 @@ import argparse
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
-from starter.ml.data import process_data
-from starter.ml.model import (
+from ml.data import process_data
+from ml.model import (
     train_model,
     save_model_attributes,
     load_model_attributes,
