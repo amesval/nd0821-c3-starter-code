@@ -1,6 +1,6 @@
 # Salary classification for Census Income dataset
 
-In this project we use demographic information to predict if a person has an anual income that exceeds $50k per year, based on census data (https://archive.ics.uci.edu/dataset/20/census+income).
+In this project we use demographic information to predict if a person has an anual income that exceeds $50k per year. This project is based on census data (https://archive.ics.uci.edu/dataset/20/census+income).
 The model is called from a FastAPI app that runs in a remote server (https://render.com/).
 
 # Setup environment
