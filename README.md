@@ -25,6 +25,11 @@ conda activate <ENV_NAME>
 pip install -r src/requirements.txt
 ```
 
+5. Switch to src/ directory:
+```
+cd src
+```
+
 # Data
 
 The dataset location of the Census dataset (https://archive.ics.uci.edu/dataset/20/census+income) can be found in *src/data/census.csv*. A clean version of the dataset can be found here *src/data/clean_census.csv*.
