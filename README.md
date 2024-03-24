@@ -40,6 +40,8 @@ The income classification is perform by a Random Forest Classification model. To
 python -m ml.train_model
 ```
 
+The metrics of the train model are saved in *src/model/metrics_report_model.txt*.
+
 When a training is execute, it is possible to obtained the metrics for a particular feature once the model is trained. By default the *workclass* feature is selected. You can change the feature by using the *feature_to_slice* argument:
 ```
 python -m ml.train_model --feature_to_slice <FEATURE_NAME>
@@ -57,21 +59,21 @@ You can check more details of the trained model in the *src/model_card_template.
 
 # API Creation
 
-An API was created using FastAPI (https://fastapi.tiangolo.com/). The API implement:
-* GET method on the root giving a welcome message.
-* POST that does model inference.
+An API was created using FastAPI (https://fastapi.tiangolo.com/). The API implements:
+* GET method on the root (giving a welcome message).
+* POST method that performs the model inference.
 
-The API uses type hinting, and a Pydantic model to ingest the body from POST. You can check the implementation in the *main.py* file.
+The API uses type hinting, and a Pydantic model to ingest the body from POST. You can check the implementation in the *src/main.py* file.
 
 Two examples are provided to test for a positive and negative class. Feel free to inspect both files:
-1) api_body_example_neg.json
-2) api_body_example_pos.json
+1) *src/api_body_example_neg.json*
+2) *src/api_body_example_pos.json*
 
 # Software test cases
 
-To test the API functionality, the *test_api.py* defines 3 cases to validate the POST and GET methods.
+To test the API functionality, *src/test_api.py* defines 3 cases to validate the POST and GET methods.
 
-In the *starter/ml/test_functions.py* you can find multiple test cases to verify that the training, the generation of artifacts, and the inference pipeline works as expected.
+In *src/ml/test_functions.py* you can find multiple test cases to verify that the training, the generation of artifacts, and the inference pipeline works as expected.
 
 To run all the test, just run from the terminal
 ```
@@ -90,7 +92,7 @@ The workflow install python dependencies, run tests, and lint checks before depl
 
 You can test our solution which deploys the API in a *Render* server.
 
-Note: To deploy your API in a server, sign up for a *Render* account (https://render.com/),
+Note: To deploy your API in a new server, sign up for a *Render* account (https://render.com/),
 and follow the instructions to link your GitHub repository to the server.
 
 
@@ -162,27 +164,9 @@ To start a local app we call:
             - data.py (???)
             - model.py (???)
 
-# Note: The server is running the app
-
-# NOTE: UNTIL NOW WE NEED TO EXPLAIN
-1) [Done]Run test cases
 2) Run API inferences in:
     - Python
     - FastAPI
     - Postman
     (Either for server and local app)
-3) Run test cases
-4) [Done] Explain how to train the model
-5) [Done] Explain EDA process
-6) [Done] Explain data?? (explain how to clean data)
-7) [Done] Explain model?? (explain model metrics??)
-8) [Done] Explain CI/CD with GitHub Actions
 9) [Done] Explain screenshots? Not needed
-10) [Done]Explain model card
-11) [Done] Add License
-
-# TODO: After all
-1) Rename repo
-2) Change structure of the repo
-3) Remove the sanity check
-3) Change GitHub Actions "cd starter"
