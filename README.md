@@ -96,8 +96,7 @@ The *src/main.py* defines the FastAPI app, the GET and POST method, and their en
 
 *src/post_to_api.py* is used to call the POST method from Python.
 
-Note: To deploy your API in a new server, sign up for a *Render* account (https://render.com/),
-and follow the instructions to link your GitHub repository to the server.
+Note: To deploy your API in a new server, sign up for a *Render* account (https://render.com/) and follow the instructions to link your GitHub repository to the server.
 
 # GET method (server solution)
 
