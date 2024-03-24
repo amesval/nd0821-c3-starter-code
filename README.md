@@ -12,7 +12,7 @@ git clone https://github.com/amesval/nd0821-c3-starter-code.git
 
 2. Create a conda environment:
 ```
-conda create --name <ENV_NAME> python=3.8
+conda create --name <ENV_NAME> python=3.8.19
 ```
 
 3. Activate environment
@@ -20,43 +20,40 @@ conda create --name <ENV_NAME> python=3.8
 conda activate <ENV_NAME>
 ```
 
-4. Install requirements file (move code to the other folder??)
+4. Install requirements file
 ```
 pip install -r requirements.txt
 ```
 
 # Data
 
-The dataset location of the Census dataset (https://archive.ics.uci.edu/dataset/20/census+income) can be found in *./data/census.csv*. A clean version of the dataset can be found here *./data/clean_census.csv*.
+The dataset location of the Census dataset (https://archive.ics.uci.edu/dataset/20/census+income) can be found in *src/data/census.csv*. A clean version of the dataset can be found here *src/data/clean_census.csv*.
 
 # Exploratory Data Analysis
 
-A dataset exploration can be found in the *eda.ipynb* notebook. A clean version of the dataset (*./data/clean_census.csv*) is generated here.
+A dataset exploration can be found in the *eda.ipynb* notebook. A clean version of the dataset (*src/data/clean_census.csv*) is generated here.
 
 # Training
 
-The income classification is perform by a Random Forest Classification model. To train a new model with the *./data/clean_census.csv* just run:
+The income classification is perform by a Random Forest Classification model. To train a new model with the *src/data/clean_census.csv* just run:
 ```
-python starter/ml/train_model.py
+python -m ml.train_model
 ```
 
 When a training is execute, it is possible to obtained the metrics for a particular feature once the model is trained. By default the *workclass* feature is selected. You can change the feature by using the *feature_to_slice* argument:
 ```
-python starter/ml/train_model.py --feature_to_slice <FEATURE_NAME>
+python -m ml.train_model --feature_to_slice <FEATURE_NAME>
 ```
 
-The metrics for the selected feature can be found in *./model/slice_output.txt*.
+The metrics for the selected feature can be found in *src/model/slice_output.txt*.
 
 # Model
 
+The trained model is saved as *src/model/model.pkl*. The model output could be >50K (Positive class), <=50K (Negative class).
 
-Necesito describir la salida del modelo >50K, <=50K
+The metrics of the current model are in *src/model/metrics_report_model.txt*.
 
-The trained model is saved as *./model/model.pkl*. The model output could be >50K (Positive class), <=50K (Negative class).
-
-The metrics of the current model are in *./model/metrics_report_model.txt*.
-
-You can check more details of the trained model in the *model_card_template.md*, including, ethical considerations, caveats and recommendations.
+You can check more details of the trained model in the *src/model_card_template.md*, including, ethical considerations, caveats and recommendations.
 
 # API Creation
 
