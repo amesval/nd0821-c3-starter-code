@@ -90,83 +90,50 @@ The workflow install python dependencies, run tests, and lint checks before depl
 
 # API Deployment
 
-You can test our solution which deploys the API in a *Render* server.
+You can test our solution which deploys the API in a *Render* server (https://salary-prediction-api-s2x0.onrender.com).
+
+The *src/main.py* defines the FastAPI app, the GET and POST method, and their endpoints.
+
+*src/post_to_api.py* is used to call the POST method from Python.
 
 Note: To deploy your API in a new server, sign up for a *Render* account (https://render.com/),
 and follow the instructions to link your GitHub repository to the server.
 
+# GET method (server solution)
 
-* Write a script that uses the requests module to do one POST on your live API.
+- To call the GET method just open the server in the browser (https://salary-prediction-api-s2x0.onrender.com/).
+- You can also try the GET method from the API documentation: https://salary-prediction-api-s2x0.onrender.com/docs#.
+- To test with Postman (https://www.postman.com/) just add the endpoint url (https://salary-prediction-api-s2x0.onrender.com/) to the GET method.
+
+# POST method (server solution)
+
+1) To make predictions from Python switch to */src/* directory
+2) Run:
+```
+python post_to_api.py --endpoint_url https://salary-prediction-api-s2x0.onrender.com/inference --input_filename <FILENAME>
+```
+Note: You can replace \<FILENAME\> with *api_body_example_neg.json* or *api_body_example_pos.json*
+
+For *Postman* or the API docs (https://salary-prediction-api-s2x0.onrender.com/docs#) you can just copy your example into the *body*.
+
+Note: If you want to test with Postman, make sure to use the correct endpoint (https://salary-prediction-api-s2x0.onrender.com/inference).
+
+# Run API locally
+
+1) Move to /src/ directory
+2) Run:
+```
+uvicorn main:app --reload
+```
+- GET Method endpoint: http://127.0.0.1:8000 (or http://localhost:8000/)
+- POST Method endpoint: http://127.0.0.1:8000/inference. 
+
+The way to call both methods is analogous as using the *Render* server.
+
+For more information, feel free to check https://fastapi.tiangolo.com/tutorial/first-steps/.
 
 # License
 
 [License](LICENSE.txt)
 
-- Server: https://salary-prediction-api-s2x0.onrender.com/ (How to use GET method from the browser. Just Open the browser) live-get
-- FastAPI: https://salary-prediction-api-s2x0.onrender.com/docs# (How to use GET method from the browser using FastAPI)
-- Postman:
-- Python:
-
-
-3) Creamos dos ejemplos de prueba:
-    a) api_body_example_neg.json
-    b) api_body_example_pos.json
-4) test_api.py define los test cases que se usan en el unit test
-3) Hacemos predicciones con el modelo mediante diferentes enfoques:
-    1) Python (utilizando el script de post_to_api.py):
-        se utilizan los dos ejemplos del paso 3
-    2) Postman:
-        - iniciamos la API
-        - hacemos la inferencia en http://localhost:8000/inference
-
-    - live_post.png (muestra el resultado de usar post desde python)
-    - postman_example.png (muestra el resultado  desde la API de python)
-
-
-post_to_api.py llama el metodo post de la API (local y remota)
-test_set.csv es uno de los datasets a utilizar (que es el test_set2.csv)
-
-##########################################################
-Hay tres formas para llamar los metodos get y post:
-
-To start a local app we call:
-    - uvicorn main:app --reload
-    if we go to http://127.0.0.1:8000 or http://localhost:8000/
-    we can observe the get method there or from server https://salary-prediction-api-s2x0.onrender.com/
-
-1) Python (To test the post method only)
-    - using localhost (python post_to_api.py --endpoint_url http://127.0.0.1:8000/inference --input_filename ./api_body_example_neg.json)
-    - using server (python post_to_api.py --endpoint_url https://salary-prediction-api-s2x0.onrender.com/inference --input_filename ./api_body_example_neg.json)
-2) Postman:
-    - using localhost (uvicorn main:app --reload.. more info https://fastapi.tiangolo.com/tutorial/first-steps/)
-    - using server (already working in the render server)
-3) FastAPI (in the browser):
-    - Either for server of for local API
-        - server: (https://salary-prediction-api-s2x0.onrender.com/docs)
-        - localhost: (http://127.0.0.1:8000/docs or http://localhost:8000.docs)
-    - call the get method (say hello)
-    - call the post method (inference)
-##########################################################
-
-- starter
-    - conftest.py
-    - test_api.py
-    - sanitycheck.py (run sanity check to meet udacity criteria)
-    - eda.ipynb (crea las estadisticas y limpia el dataset)
-    - main.py (script to call the FastAPI. it also defines the get and post method and their endpoints)
-    - post_to_api.py (llama el metodo post para ejecutarlo en python)
-    - setup.py (included at the beginning, check what it does)
-    - starter
-        - conftest.py
-        - test_functions.py
-        - train_model.py (???)
-        - ml
-            - data.py (???)
-            - model.py (???)
-
-2) Run API inferences in:
-    - Python
-    - FastAPI
-    - Postman
-    (Either for server and local app)
-9) [Done] Explain screenshots? Not needed
+setup.py (included at the beginning, check what it does)
