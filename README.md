@@ -3,6 +3,8 @@
 In this project we use demographic information to predict if a person has an anual income that exceeds $50k per year. This project is based on census data (https://archive.ics.uci.edu/dataset/20/census+income).
 The model is called from a FastAPI app that runs in a remote server (https://render.com/).
 
+This project is part of the ML DevOps Engineer Nanodegree (Udacity).
+
 # Setup environment
 
 1. Clone repository:
