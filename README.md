@@ -22,7 +22,7 @@ conda activate <ENV_NAME>
 
 4. Install requirements file
 ```
-pip install -r requirements.txt
+pip install -r *src/requirements.txt*
 ```
 
 # Data
