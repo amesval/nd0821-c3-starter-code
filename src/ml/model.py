@@ -152,7 +152,9 @@ def performance_for_feature_slice(dataset, feature, model_attributes):
     lb = model_attributes['lb']
     cat_features = model_attributes['cat_features']
     if feature not in cat_features:
-        raise ValueError("Invalid value. The feature should be a categorical feature.")
+        raise ValueError(
+            "Invalid value. The feature should be a categorical feature."
+            )
     with open("./model/slice_output.txt", 'w') as f:
         for value in dataset[feature].unique():
             feat_filter = dataset[feature] == value
