@@ -31,7 +31,7 @@ The dataset location of the Census dataset (https://archive.ics.uci.edu/dataset/
 
 # Exploratory Data Analysis
 
-A dataset exploration can be found in the *eda.ipynb* notebook. A clean version of the dataset (*src/data/clean_census.csv*) is generated here.
+A dataset exploration can be found in the *src/eda.ipynb* notebook. A clean version of the dataset (*src/data/clean_census.csv*) is generated here.
 
 # Training
 
