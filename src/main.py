@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from starter.ml.model import inference as model_inference
-from starter.ml.model import load_model_attributes as load_model
+from ml.model import inference as model_inference
+from ml.model import load_model_attributes as load_model
 import pandas as pd
 import numpy as np
 
