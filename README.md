@@ -135,4 +135,3 @@ For more information, feel free to check https://fastapi.tiangolo.com/tutorial/f
 
 [License](LICENSE.txt)
 
-setup.py (included at the beginning, check what it does)
