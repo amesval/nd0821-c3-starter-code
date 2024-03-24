@@ -7,7 +7,7 @@ The model is called from a FastAPI app that runs in a remote server (https://ren
 
 1. Clone repository:
 ```
-git clone https://github.com/amesval/nd0821-c3-starter-code.git
+git clone https://github.com/amesval/salary_classification.git
 ```
 
 2. Create a conda environment:
